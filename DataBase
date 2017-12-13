@@ -1,0 +1,101 @@
+CREATE DATABASE FilesDrop_DataBase
+
+CREATE TABLE `File` (
+  `link` text NOT NULL,
+  `id_st` int(11) NOT NULL,
+  `id_ls` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `Groupe` (
+  `id_gr` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `lesson` (
+  `id_ls` int(11) NOT NULL,
+  `name` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `les_to_gr` (
+  `id_ls` int(11) NOT NULL,
+  `id_gr` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `student` (
+  `id_st` int(11) NOT NULL,
+  `FIO` text NOT NULL,
+  `birthday` date NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `gr_numb` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `File` (`link`, `id_st`, `id_ls`) VALUES
+('https://www.google.ru/', 2, 1),
+('https://www.google.ru/', 5, 3),
+('https://www.google.ru/', 4, 1),
+('https://www.google.ru/', 6, 3),
+('https://www.google.ru/', 7, 3),
+('https://www.google.ru/', 3, 4);
+
+INSERT INTO `Groupe` (`id_gr`) VALUES
+(3301),
+(3302);
+
+INSERT INTO `lesson` (`id_ls`, `name`) VALUES
+(1, 'Вычислительные системы'),
+(2, 'Информационные технологии в проектировании'),
+(3, 'Сетевое web-программирования'),
+(4, 'Математические основы информатики');
+
+INSERT INTO `les_to_gr` (`id_ls`, `id_gr`) VALUES
+(4, 3301),
+(4, 3301),
+(1, 3301),
+(1, 3301),
+(2, 3301),
+(2, 3301),
+(3, 3302),
+(3, 3301);
+
+INSERT INTO `student` (`id_st`, `FIO`, `birthday`, `status`, `gr_numb`) VALUES
+(2, 'Миннагалиев Альберт Юрьевич', '1995-11-16', 1, 3302),
+(3, 'Пушкин Александр Сергеевич', '2017-12-13', 1, 3302),
+(4, 'Бондарчук Сергей Иванович', '2017-12-15', 1, 3302),
+(5, 'Барышев Сергей Владимирович', '2017-12-14', 1, 3301),
+(6, 'Джеймс Гослинг', '2017-12-14', 0, 3301),
+(7, 'Серге́й Миха́йлович Брин', '2017-12-13', 1, 3301);
+
+ALTER TABLE `File`
+  ADD KEY `id_st` (`id_st`),
+  ADD KEY `id_ls` (`id_ls`);
+
+ALTER TABLE `Groupe`
+  ADD PRIMARY KEY (`id_gr`);
+
+ALTER TABLE `lesson`
+  ADD PRIMARY KEY (`id_ls`);
+
+ALTER TABLE `les_to_gr`
+  ADD KEY `id_ls` (`id_ls`),
+  ADD KEY `id_gr` (`id_gr`);
+
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`id_st`),
+  ADD KEY `gr_numb` (`gr_numb`);
+
+ALTER TABLE `lesson`
+  MODIFY `id_ls` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+ALTER TABLE `student`
+  MODIFY `id_st` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+ALTER TABLE `File`
+  ADD CONSTRAINT `file_ibfk_1` FOREIGN KEY (`id_st`) REFERENCES `student` (`id_st`),
+  ADD CONSTRAINT `file_ibfk_2` FOREIGN KEY (`id_ls`) REFERENCES `lesson` (`id_ls`);
+
+ALTER TABLE `les_to_gr`
+  ADD CONSTRAINT `les_to_gr_ibfk_1` FOREIGN KEY (`id_gr`) REFERENCES `Groupe` (`id_gr`),
+  ADD CONSTRAINT `les_to_gr_ibfk_2` FOREIGN KEY (`id_ls`) REFERENCES `lesson` (`id_ls`);
+
+ALTER TABLE `student`
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`gr_numb`) REFERENCES `Groupe` (`id_gr`);
+
