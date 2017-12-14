@@ -1,0 +1,65 @@
+CREATE DATABASE Reports
+
+CREATE TABLE `Group` (
+  `group_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `group_name` CHAR(6) NOT NULL,
+  `group_year` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `Student` (
+  `student_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `fullname` CHAR(100) NOT NULL,
+  `birthday` date NOT NULL,
+  `group_id` int NOT NULL,
+  `sex` BOOLEAN NOT NULL,
+  `status` BOOLEAN NOT NULL,
+  KEY `group_id` (`group_id`)  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `File` (
+  `link` text NOT NULL,
+  `student_id` int NOT NULL,
+  `course_id` int NOT NULL,
+  KEY `student_id` (`student_id`),
+  KEY `course_id` (`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `Course` (
+  `course_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` CHAR(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `Course_to_group` (
+  `course_id` int NOT NULL,
+  `group_id` int NOT NULL, 
+  KEY `course_id` (`course_id`),
+  KEY `group_id` (`group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `File`
+  ADD CONSTRAINT `file_student_id` FOREIGN KEY (`student_id`) REFERENCES `Student` (`student_id`),
+  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `Course` (`course_id`);
+
+ALTER TABLE `Course_to_group`
+  ADD CONSTRAINT `course_to_group_group_id` FOREIGN KEY (`group_id`) REFERENCES `Group` (`group_id`),
+  ADD CONSTRAINT `course_to_group_course_id` FOREIGN KEY (`course_id`) REFERENCES `Course` (`course_id`);
+
+ALTER TABLE `Student`
+  ADD CONSTRAINT `student_group_id` FOREIGN KEY (`group_id`) REFERENCES `Group` (`group_id`);
+
+INSERT INTO `Group` (`group_name`, `group_year`) VALUES ('3301', '2017'), ('3302', '2017');
+
+INSERT INTO `Course` (`name`) VALUES ('Вычислительные системы'), ('Информационные технологии в проектировании'), ('Сетевое web-программирования'), ('Математические основы информатики');
+
+INSERT INTO `Student` (`fullname`, `birthday`, `group_id`, `sex`, `status`) VALUES ('Нагиев Манцур Юрьевич', '1995-11-16', '1', '1', '1'), ('Пушкин Александр Сергеевич', '2017-12-13', '1', '1', '1'), ('Бондарчук Нина Ковачич', '2017-12-15', '1', '2', '1'), ('Барышев Сергей Владимирович', '2017-12-14', '2', '1', '1'), ('Джеймс Гослинг', '2017-12-14', '2', '1', '1'), ('Сергей Михайлович Брин', '2017-12-13', '2', '1', '1');
+
+INSERT INTO `File` (`link`, `student_id`, `course_id`) VALUES ('https://www.google.ru/', '1', '1'), ('https://www.google.ru/', '2', '1'), ('https://www.google.ru/', '4', '3'), ('https://www.google.ru/', '3', '2'), ('https://www.google.ru/', '5', '2'), ('https://www.google.ru/', '5', '3'), ('https://www.google.ru/', '1', '2');
+
+INSERT INTO `Course_to_group` (`course_id`, `group_id`) VALUES ('4', '1'), ('4', '2'), ('1', '1'), ('1', '2'), ('2', '1'), ('2', '2'), ('3', '1');
+
+
+
+
+
+
