@@ -1,0 +1,458 @@
+{
+	"info": {
+		"name": "Reports collection",
+		"_postman_id": "36b92e88-f13c-59e6-818e-3c0ef1b4212f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://reports/course/read.php",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://reports/course/read.php",
+					"protocol": "http",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"course",
+						"read.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://reports/course/read_one.php?id=2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://reports/course/read_one.php?id=3",
+					"protocol": "http",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"course",
+						"read_one.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://reports/course/create.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n            \"name\": \"Мое тестовое имя\"\n}"
+				},
+				"url": {
+					"raw": "http://reports/course/create.php",
+					"protocol": "http",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"course",
+						"create.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reports/course/delete.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"course_id\": \"7\"\n}"
+				},
+				"url": {
+					"raw": "reports/course/delete.php",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"course",
+						"delete.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reports/course/update.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"8\",\n    \"name\": \"Новое имя измененное в Postman\"\n}"
+				},
+				"url": {
+					"raw": "reports/course/update.php",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"course",
+						"update.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reports/file/read.php",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "reports/file/read.php",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"file",
+						"read.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reports/file/create.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"course_id\": \"3\",\n            \"student_id\": \"2\",\n            \"link\": \"https://www.facebook.com/\"\n        }"
+				},
+				"url": {
+					"raw": "reports/file/create.php",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"file",
+						"create.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reports/student/read.php",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "reports/student/read.php",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"student",
+						"read.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reports/student/read_one.php?id=11",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "reports/student/read_one.php?id=11",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"student",
+						"read_one.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "11",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reports/student/delete.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"id\": \"8\"\n        }"
+				},
+				"url": {
+					"raw": "reports/student/delete.php",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"student",
+						"delete.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reports/student/create.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"fullname\": \"Тестовое добавление\",\n            \"birthday\": \"1995-10-10\",\n            \"group_id\": \"2\",\n            \"sex\": \"1\",\n            \"status\": \"1\"\n        }"
+				},
+				"url": {
+					"raw": "reports/student/create.php",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"student",
+						"create.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reports/student/update.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{           \n\t\t\t\"student_id\": \"13\",\n            \"fullname\": \"Тестовое добавление и изменение 2\",\n            \"birthday\": \"2015-10-10\",\n            \"group_id\": \"1\",\n            \"sex\": \"1\",\n            \"status\": \"1\"\n        }"
+				},
+				"url": {
+					"raw": "reports/student/update.php",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"student",
+						"update.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "reports/group/read.php",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "reports/group/read.php",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"group",
+						"read.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://reports/group/read_one.php?id=2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://reports/group/read_one.php?id=2",
+					"protocol": "http",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"group",
+						"read_one.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://reports/group/create.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"group_name\": \"3305\",\n            \"group_year\": \"2000\"\n        }"
+				},
+				"url": {
+					"raw": "http://reports/group/create.php",
+					"protocol": "http",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"group",
+						"create.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://reports/group/update.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"group_name\": \"3305\",\n            \"group_year\": \"2000\",\n            \"group_id\": \"4\"\n        }"
+				},
+				"url": {
+					"raw": "http://reports/group/update.php",
+					"protocol": "http",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"group",
+						"update.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://reports/group/delete.php",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"id\": \"3\"\n        }"
+				},
+				"url": {
+					"raw": "http://reports/group/delete.php",
+					"protocol": "http",
+					"host": [
+						"reports"
+					],
+					"path": [
+						"group",
+						"delete.php"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
